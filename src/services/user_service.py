@@ -1,4 +1,3 @@
-
 from pwdlib import PasswordHash
 from sqlalchemy.orm import Session
 
