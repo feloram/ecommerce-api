@@ -20,10 +20,12 @@ def create_product(db:Session , product_data , vendor_id:int):
     return product
 
 
-def  get_all_products(db: Session):
+def  get_all_products(db: Session, page: int = 1, page_size: int = 20):
     return(
         db.query(Product).join(Vendor,Product.vendor_id == Vendor.id)
-        .filter(Vendor.is_active == True , Product.is_active == True).all()
+        # .filter(Vendor.is_active == True , Product.is_active == True).all()
+        .filter(Vendor.is_active == True , Product.is_active == True)
+        .order_by(Product.id).offset((page - 1) * page_size).limit(page_size).all()
     )
 
 def get_product_by_id(db: Session , Product_id:int):

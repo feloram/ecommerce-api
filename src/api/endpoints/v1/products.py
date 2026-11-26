@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
+from fastapi import Query
 
 from src.connections.postgresql import get_db
 from src.api.dependencies import get_current_user
@@ -45,10 +46,12 @@ def create_product_endpoint(
     response_model=list[ProductResponse]
 )
 def get_products_endpoint(
+    page: int = Query(1, ge=1),
+    page_size: int = Query(20, ge=1, le=100),
     db: Session = Depends(get_db)
 ):
 
-    return list_products(db)
+    return list_products(db, page=page, page_size=page_size)
 
 
 @router.get(

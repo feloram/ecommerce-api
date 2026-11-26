@@ -14,9 +14,9 @@ def register_product(db: Session , product_data , vendor_id: int , user_id: int)
 
      return create_product(db=db , product_data=product_data , vendor_id=vendor_id)
 
-def list_products(db: Session):
+def list_products(db: Session, page: int = 1, page_size: int = 20):
 
-    return get_all_products(db)
+    return get_all_products(db,page=page,page_size=page_size)
 
 
 def get_product_details(db: Session, product_id: int):

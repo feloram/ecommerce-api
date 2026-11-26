@@ -15,10 +15,10 @@ class ProductCreate(BaseModel):
 class ProductResponse(BaseModel):
     id:int
     name:str
-    description:str
+    description: str | None
     price:Decimal
     stock:int
     vendor_id:int
     is_active:bool
 
-model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(from_attributes=True)
