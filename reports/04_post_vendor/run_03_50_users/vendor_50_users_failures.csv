@@ -1,0 +1,2 @@
+Method,Name,Error,Occurrences,First Seen,Last Seen
+POST,POST /api/v1/vendors,CatchResponseError('Vendor creation failed: HTTP 409'),35,2026-11-27T21:48:22Z,2026-11-27T21:48:25Z
